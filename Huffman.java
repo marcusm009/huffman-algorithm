@@ -39,7 +39,7 @@ public class Huffman implements HuffmanCoding
     }
     catch(FileNotFoundException ex)
     {
-      System.out.println("error");
+      System.out.println("error1");
     }
 
     for(int i = 0; i < 128; i++)
@@ -109,7 +109,7 @@ public class Huffman implements HuffmanCoding
     }
     catch(FileNotFoundException ex)
     {
-      System.out.println("error");
+      System.out.println("error2");
     }
     return htQueue.poll();
 
@@ -121,7 +121,7 @@ public class Huffman implements HuffmanCoding
   {
     //TRAVERSE TREE
     Stack<HuffNode> stack = new Stack<HuffNode>();
-    Hashtable<Integer, String> table = new Hashtable<Integer, String>();
+    HashMap<Integer, String> table = new HashMap<Integer, String>();
     HuffNode curNode = huffTree.getRoot();
 
     //Iterates down the left subtree to get initial stack
@@ -153,7 +153,8 @@ public class Huffman implements HuffmanCoding
     }
 
     //SCANNING FILE
-    String output = "";
+    StringBuilder output = new StringBuilder();
+    int count = 0;
 
     try
     {
@@ -164,27 +165,28 @@ public class Huffman implements HuffmanCoding
       //Initializes frequency of each char to zero or increments it
       while(scan.hasNext())
       {
+        System.out.println(++count);
         String temp = table.get((int)scan.next().charAt(0));
         if(temp == null)
         {
           continue;
         }
-        output += temp;
+        output.append(temp);
       }
       scan.close();
     }
     catch(FileNotFoundException ex)
     {
-      System.out.println("error");
+      System.out.println("error3");
     }
 
-    return output;
+    return output.toString();
   }
 
   //take a String and HuffTree and output the decoded words
   public String decodeFile(String code, HuffTree huffTree) throws Exception
   {
-    String output = "";
+    StringBuilder output = new StringBuilder();
     HuffNode curNode = huffTree.getRoot();
 
     for(char e: code.toCharArray())
@@ -199,17 +201,17 @@ public class Huffman implements HuffmanCoding
       }
       else
       {
-        return "error";
+        return "error4";
       }
 
       if(curNode.isLeaf())
       {
-        output += ((HuffLeafNode)curNode).getCharacter();
+        output.append(((HuffLeafNode)curNode).getCharacter());
         curNode = huffTree.getRoot();
       }
     }
 
-    return output;
+    return output.toString();
   }
 
   //print the characters and their codes
