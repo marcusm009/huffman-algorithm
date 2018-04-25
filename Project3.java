@@ -7,7 +7,7 @@ public class Project3
 
   public static void main(String[] args) throws FileNotFoundException
   {
-    Huffman huff = new Huffman();
+    HuffmanEncoder huff = new HuffmanEncoder();
     HuffTree ht;
     String code;
 

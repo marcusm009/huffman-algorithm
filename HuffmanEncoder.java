@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Huffman implements HuffmanCoding
+public class HuffmanEncoder implements HuffmanCoding
 {
   //take a file as input and create a table with characters and frequencies
   //print the characters and frequencies

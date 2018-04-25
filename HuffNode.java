@@ -1,5 +1,6 @@
 public interface HuffNode
 {
+  //Declaring methods
   public boolean isLeaf();
   public int getFrequency();
   public HuffNode getLeft();
