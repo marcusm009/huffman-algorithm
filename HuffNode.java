@@ -1,6 +1,6 @@
 public interface HuffNode
 {
-  //Declaring methods
+  //Declaring methods that must be overriden
   public boolean isLeaf();
   public int getFrequency();
   public HuffNode getLeft();
@@ -11,10 +11,12 @@ public interface HuffNode
 
 class HuffLeafNode implements HuffNode
 {
+  //Private member variables
   private int frequency;
   private int asciiVal;
   private String code;
 
+  //Constructor
   public HuffLeafNode(int asciiVal, int frequency)
   {
     this.asciiVal = asciiVal;
@@ -22,11 +24,7 @@ class HuffLeafNode implements HuffNode
     this.code = "";
   }
 
-  public String toString()
-  {
-    String temp = (char)asciiVal + " " + frequency + "\n";
-    return temp;
-  }
+  //Getters and setters
 
   public boolean isLeaf()
   {
@@ -71,11 +69,13 @@ class HuffLeafNode implements HuffNode
 
 class HuffInternalNode implements HuffNode
 {
+  //Private member variables
   private int frequency;
   private HuffNode left;
   private HuffNode right;
   private String code;
 
+  //Constructor
   public HuffInternalNode(int frequency, HuffNode left, HuffNode right)
   {
     this.frequency = frequency;
@@ -84,6 +84,7 @@ class HuffInternalNode implements HuffNode
     this.code = "";
   }
 
+  //Getters and setters
   public String toString()
   {
     return "" + frequency;
